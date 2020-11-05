@@ -20,6 +20,11 @@ public class MyTwoStackQueue<T> {
     private Stack<T> pushStack = new Stack<>();
     private Stack<T> popStack = new Stack<>();
 
+    /**
+     * 这个方法其实就是用来满足两个注意事项的。
+     * 从实现来看，当队列入队一个元素的时候，主要不出队，就不会执行这个方法。
+     * 所以当队列数据较多，再出队的时候，复杂度会很高
+     */
     private void pushToPop() {
         if (popStack.isEmpty()) {
             while (!pushStack.isEmpty()) {
@@ -50,7 +55,7 @@ public class MyTwoStackQueue<T> {
     }
 
     public static void main(String[] args) {
-        MyTwoStackQueue<Integer> queue = new MyTwoStackQueue();
+        MyTwoStackQueue<Integer> queue = new MyTwoStackQueue<>();
         queue.add(1);
         queue.add(2);
         queue.add(3);
